@@ -1,0 +1,19 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Incorrect!</h1>
+
+<h2>Correct answer options were:</h2>
+
+<% if(it.correct_options && it.correct_options.length > 0 ){%>
+  <ul>
+    <% it.correct_options.forEach((option) => { %>
+    <li><%= option.option_text %></li>
+   <%});%>
+  </ul>
+<%} else {%>
+    <p>It seems that there were no correct options</p>
+<%}%>
+
+<form method="GET" action="/quiz/<%= it.topic.id %>">
+  <input type="submit" value="Next question" />
+</form>
